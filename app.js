@@ -13,12 +13,6 @@ const session = require("express-session");
 const compression = require("compression");
 const helmet = require("helmet");
 
-const RateLimit = require("express-rate-limit");
-const limiter = RateLimit({
-  windowMs: 1 * 60 * 1000, // 1 minute
-  max: 20,
-});
-
 // passport
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
@@ -69,8 +63,6 @@ app.use(
     },
   })
 );
-
-app.use(limiter);
 
 app.use(compression());
 
