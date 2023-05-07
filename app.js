@@ -2,7 +2,10 @@ require("dotenv").config();
 
 var cors = require("cors");
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: [
+    "http://localhost:3000",
+    "https://mikhailyu.github.io/blog-app-user",
+  ],
   credentials: true,
 
   optionSuccessStatus: 200,
@@ -98,7 +101,7 @@ passport.use(
   new LocalStrategy(
     {
       usernameField: "username",
-      passwordField: "password",
+      passwordField: "username",
     },
     async (username, password, done) => {
       try {
