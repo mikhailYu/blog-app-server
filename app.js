@@ -4,8 +4,7 @@ var cors = require("cors");
 const corsOptions = {
   origin: "*",
   credentials: true,
-  methods: "GET, POST, PATCH, DELETE, PUT",
-  allowedHeaders: "Content-Type, Authorization",
+
   optionSuccessStatus: 200,
 };
 
@@ -30,7 +29,7 @@ var commentRouter = require("./routes/comment");
 var userRouter = require("./routes/user");
 
 var app = express();
-app.use(cors(corsOptions)); // Use this after the variable declaration
+app.use(cors()); // Use this after the variable declaration
 
 const PORT = process.env.PORT || 3030;
 
