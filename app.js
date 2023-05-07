@@ -38,9 +38,7 @@ let loginPassword = "";
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-// const mongoDB = process.env.DB_URL;
-const mongoDB =
-  "mongodb+srv://admin:adminPassword@cluster0.3kvakkg.mongodb.net/odin-blog?retryWrites=true&w=majority";
+const mongoDB = process.env.DB_URL;
 
 main().catch((err) => console.log(err));
 async function main() {
@@ -188,7 +186,7 @@ app.use(function (err, req, res, next) {
 });
 
 // Use PORT provided in environment or default to 3000
-var port = process.env.PORT;
+var port = process.env.PORT || 4000;
 
 // Listen on `port` and 0.0.0.0
 app.listen(port, "0.0.0.0", function () {
