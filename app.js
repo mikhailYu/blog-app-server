@@ -185,4 +185,12 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
+// Use PORT provided in environment or default to 3000
+var port = process.env.PORT;
+
+// Listen on `port` and 0.0.0.0
+app.listen(port, "0.0.0.0", function () {
+  // ...
+});
+
 module.exports = app;
