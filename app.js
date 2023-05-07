@@ -5,6 +5,7 @@ const corsOptions = {
   origin: [
     "http://localhost:3000",
     "https://mikhailyu.github.io/blog-app-user",
+    "https://mikhailyu.github.io",
   ],
   credentials: true,
 
