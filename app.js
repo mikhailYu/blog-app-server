@@ -58,11 +58,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json({ type: "application/*" }));
 app.use(function (req, res, next) {
   // res.header("Access-Control-Allow-Origin", "*");
-  const allowedOrigins = [
-    "http://localhost:3000",
-    "http://gamebrag.onrender.com",
-    "https://gamebrag.onrender.com",
-  ];
+  const allowedOrigins = ["http://localhost:3000/"];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin);
@@ -75,12 +71,12 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
   next();
 });
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000", // frontend base url
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: "http://localhost:3000", // frontend base url
+    credentials: true,
+  })
+);
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
