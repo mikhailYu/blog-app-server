@@ -10,8 +10,6 @@ var logger = require("morgan");
 var bodyParser = require("body-parser");
 const session = require("express-session");
 
-var User = require("../server/models/user");
-
 const compression = require("compression");
 const helmet = require("helmet");
 
