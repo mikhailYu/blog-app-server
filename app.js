@@ -97,8 +97,8 @@ passport.deserializeUser(async function (id, done) {
 passport.use(
   new LocalStrategy(
     {
-      usernameField: "usernameInput",
-      passwordField: "passwordInput",
+      usernameField: "username",
+      passwordField: "password",
     },
     async (username, password, done) => {
       try {
