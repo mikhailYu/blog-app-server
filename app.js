@@ -2,7 +2,7 @@ require("dotenv").config();
 
 var cors = require("cors");
 const corsOptions = {
-  origin: "*",
+  origin: "http://localhost:3000",
   credentials: true,
 
   optionSuccessStatus: 200,
@@ -29,7 +29,7 @@ var commentRouter = require("./routes/comment");
 var userRouter = require("./routes/user");
 
 var app = express();
-app.use(cors()); // Use this after the variable declaration
+app.use(cors(corsOptions)); // Use this after the variable declaration
 
 const PORT = process.env.PORT || 3030;
 
