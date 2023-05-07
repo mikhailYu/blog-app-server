@@ -56,27 +56,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json({ type: "application/*" }));
-app.use(function (req, res, next) {
-  // res.header("Access-Control-Allow-Origin", "*");
-  const allowedOrigins = ["http://localhost:3000/"];
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  }
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.header("Access-Control-Allow-credentials", true);
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
-  next();
-});
-app.use(
-  cors({
-    origin: "http://localhost:3000", // frontend base url
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions)); // Use this after the variable declaration
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
@@ -88,10 +73,6 @@ app.use(
 app.use(limiter);
 
 app.use(compression());
-
-app.get("/products/:id", function (req, res, next) {
-  res.json({ msg: "This is CORS-enabled for all origins!" });
-});
 
 //passport
 app.use(
