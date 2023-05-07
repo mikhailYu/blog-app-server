@@ -65,7 +65,12 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", "true");
   next();
 });
-
+app.use(
+  cors({
+    origin: "http://localhost:3000", // frontend base url
+    credentials: true,
+  })
+);
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
@@ -77,13 +82,6 @@ app.use(
 app.use(limiter);
 
 app.use(compression());
-
-app.use(
-  cors({
-    origin: "http://localhost:3000", // frontend base url
-    credentials: true,
-  })
-);
 
 app.get("/products/:id", function (req, res, next) {
   res.json({ msg: "This is CORS-enabled for all origins!" });
