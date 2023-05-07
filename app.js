@@ -1,6 +1,11 @@
 require("dotenv").config();
 
 var cors = require("cors");
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 
 var createError = require("http-errors");
 var express = require("express");
@@ -23,6 +28,7 @@ var commentRouter = require("./routes/comment");
 var userRouter = require("./routes/user");
 
 var app = express();
+app.use(cors(corsOptions)); // Use this after the variable declaration
 
 const PORT = process.env.PORT || 3030;
 
@@ -50,12 +56,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json({ type: "application/*" }));
-const corsOptions = {
-  origin: "*",
-  credentials: true, //access-control-allow-credentials:true
-  optionSuccessStatus: 200,
-};
-app.use(cors(corsOptions)); // Use this after the variable declaration
+
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
