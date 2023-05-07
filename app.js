@@ -32,6 +32,8 @@ var userRouter = require("./routes/user");
 
 var app = express();
 
+const PORT = process.env.PORT || 3030;
+
 let loginUsername = "";
 let loginPassword = "";
 
@@ -183,12 +185,8 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-// Use PORT provided in environment or default to 3000
-var port = "https://blog-app-server-production-b15a.up.railway.app/";
-
-// Listen on `port` and 0.0.0.0
-app.listen(port, "0.0.0.0", function () {
-  // ...
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
 });
 
 module.exports = app;
