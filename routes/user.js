@@ -5,8 +5,6 @@ const blogPostController = require("../controllers/blogPostController");
 const commentController = require("../controllers/commentController");
 const userController = require("../controllers/userController");
 
-router.get("/login", userController.userLogin_get);
-
 router.get("/signUp", userController.userSignUp_get);
 
 router.post("/signUp", userController.userSignUp_post);

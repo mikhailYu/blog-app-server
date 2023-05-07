@@ -4,10 +4,6 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const { body, validationResult } = require("express-validator");
 
-exports.userLogin_get = asyncHandler(async (req, res, next) => {
-  res.send("huh");
-});
-
 exports.userSignUp_get = asyncHandler(async (req, res, next) => {
   if (req.user) {
     console.log(true);
