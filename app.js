@@ -184,7 +184,7 @@ app.use(function (err, req, res, next) {
 });
 
 // Use PORT provided in environment or default to 3000
-var port = process.env.PORT || 4000;
+var port = "blog-app-server-production-b15a.up.railway.app";
 
 // Listen on `port` and 0.0.0.0
 app.listen(port, "0.0.0.0", function () {
