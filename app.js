@@ -12,6 +12,15 @@ const session = require("express-session");
 
 var User = require("../server/models/user");
 
+const compression = require("compression");
+const helmet = require("helmet");
+
+const RateLimit = require("express-rate-limit");
+const limiter = RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 20,
+});
+
 // passport
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
@@ -56,6 +65,18 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", "true");
   next();
 });
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      "script-src": ["'self'", "code.jquery.com", "cdn.jsdelivr.net"],
+    },
+  })
+);
+
+app.use(limiter);
+
+app.use(compression());
 
 app.use(
   cors({
