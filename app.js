@@ -38,7 +38,8 @@ let loginPassword = "";
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = process.env.DB_URL;
+const mongoDB =
+  "mongodb+srv://admin:adminPassword@cluster0.3kvakkg.mongodb.net/odin-blog?retryWrites=true&w=majority";
 
 main().catch((err) => console.log(err));
 async function main() {
