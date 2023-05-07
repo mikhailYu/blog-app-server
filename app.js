@@ -3,7 +3,9 @@ require("dotenv").config();
 var cors = require("cors");
 const corsOptions = {
   origin: "*",
-  credentials: true, //access-control-allow-credentials:true
+  credentials: true,
+  methods: "GET, POST, PATCH, DELETE, PUT",
+  allowedHeaders: "Content-Type, Authorization",
   optionSuccessStatus: 200,
 };
 
